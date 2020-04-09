@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="login" id="login">
+        <div class="container">
+            <div class="login-heading">
+                <h1>Sign up</h1>
+            </div>
+            <form action="" method="post" nonvalidate>
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.username.label(class="label") }}<br>
+                    {{ form.username(class="user-input") }}<br>
+                    {% for error in form.username.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.email.label(class="label") }}<br>
+                    {{ form.email(class="user-input") }}<br>
+                    {% for error in form.email.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.password.label(class="label") }}<br>
+                    {{ form.password(class="user-input") }}<br>
+                    {% for error in form.password.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.password2.label(class="label") }}<br>
+                    {{ form.password2(class="user-input") }}<br>
+                    {% for error in form.password2.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <p>{{ form.submit(class="submit") }}</p>
+            </form>
+        </div>
+    </section>
+{% endblock %}

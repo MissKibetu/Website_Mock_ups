@@ -1,0 +1,7 @@
+# files and folders
+.vscode/
+venv/
+__pycache__/
+
+app.db
+microblog.log*

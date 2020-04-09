@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="landing-page">
+        <div class="landing-text">
+            {% if current_user.is_anonymous %}
+            <h1>Hello there!</h1>
+            {% else %}
+            <h1>Hi, {{ current_user.username }}!</h1>
+            {% endif%}
+            <h6>Welcome home</h6>
+            <p>
+                This is a simple user registration/signup API practice project.
+            </p>
+        </div>
+    </section>   
+{% endblock %}

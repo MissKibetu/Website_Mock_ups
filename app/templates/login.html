@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="login" id="login">
+        <div class="container">
+            <div class="login-heading">
+                <h1>Sign In</h1>
+            </div>
+            <form action="" method="post" nonvalidate>
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.email.label(class="label") }}<br>
+                    {{ form.email(class="user-input") }}<br>
+                    {% for error in form.email.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.password.label(class="label") }}<br>
+                    {{ form.password(class="user-input") }}<br>
+                    {% for error in form.password.errors %}
+                        <span>[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <p>{{ form.remember_me() }} {{ form.remember_me.label(class="label") }}</p>
+                <p>{{ form.submit(class="submit") }}</p>
+            </form>
+            <p class="register">New User? <a href="{{ url_for('register') }}" class="register-link">Click to Register!</a></p>
+        </div>
+    </section>
+{% endblock %}

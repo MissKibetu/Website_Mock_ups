@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Website Mock Up</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav class="top-nav">
+            <ul class="nav-list">
+                <li>
+                    <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                {% if current_user.is_anonymous %}
+                <li>
+                    <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div  class="error">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    {%block content %}{% endblock %}
+    
+
+    <footer class="copyright">
+        <p>&copy; 2020 Wambui Kibetu</p>
+    </footer>
+</body>
+</html>
